@@ -16,6 +16,7 @@
 plugins {
   java
   id("nebula.release") version "15.1.0"
+  id("com.diffplug.spotless") version "5.1.2"
 }
 
 val releaseTask = tasks.named("release")
@@ -34,12 +35,20 @@ allprojects {
 
   project.group = "software.amazon.awsobservability"
 
+  plugins.apply("com.diffplug.spotless")
+
   plugins.withType(BasePlugin::class) {
     val assemble = tasks.named("assemble")
     val check = tasks.named("check")
 
     releaseTask.configure {
       dependsOn(assemble, check)
+    }
+  }
+
+  spotless {
+    kotlinGradle {
+      ktfmt("0.18")
     }
   }
 
@@ -52,6 +61,12 @@ allprojects {
     dependencies {
       configurations.configureEach {
         add(name, enforcedPlatform(project(":dependencyManagement")))
+      }
+    }
+
+    spotless {
+      java {
+        googleJavaFormat("1.8")
       }
     }
   }
