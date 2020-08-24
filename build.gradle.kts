@@ -48,7 +48,7 @@ allprojects {
 
   spotless {
     kotlinGradle {
-      ktfmt("0.18")
+      ktlint("0.38.0").userData(mapOf("indent_size" to "2", "continuation_indent_size" to "2"))
     }
   }
 
@@ -103,7 +103,8 @@ allprojects {
 
           pom {
             description.set(
-                "The Amazon Web Services distribution of the OpenTelemetry Java Instrumentation.")
+              "The Amazon Web Services distribution of the OpenTelemetry Java Instrumentation."
+            )
 
             licenses {
               license {
