@@ -30,6 +30,8 @@ project.evaluationDependsOn(":otelagent")
 val otelAgentJarTask = project(":otelagent").tasks.named<Jar>("shadowJar")
 tasks {
   named<Test>("test") {
+    enabled = findProperty("io.awsobservability.smoketests") == "true"
+
     dependsOn(otelAgentJarTask)
 
     jvmArgs(
