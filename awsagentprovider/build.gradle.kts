@@ -45,7 +45,7 @@ tasks {
     exclude("**/module-info.class")
 
     // Prevents conflict with other SLF4J instances. Important for premain.
-    relocate("rg.slf4j", "io.opentelemetry.javaagent.slf4j")
+    relocate("org.slf4j", "io.opentelemetry.javaagent.slf4j")
     // rewrite dependencies calling Logger.getLogger
     relocate("java.util.logging.Logger", "io.opentelemetry.javaagent.bootstrap.PatchLogger")
 
