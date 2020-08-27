@@ -24,7 +24,7 @@ val DEPENDENCY_BOMS = listOf(
   "com.fasterxml.jackson:jackson-bom:2.11.0",
   "com.google.protobuf:protobuf-bom:3.13.0",
   "com.linecorp.armeria:armeria-bom:1.0.0",
-  "io.grpc:grpc-bom:1.29.0",
+  "io.grpc:grpc-bom:1.31.1",
   "io.zipkin.brave:brave-bom:5.12.3",
   "io.zipkin.reporter2:zipkin-reporter-bom:2.15.0",
   "org.apache.logging.log4j:log4j-bom:2.13.3",
@@ -34,6 +34,11 @@ val DEPENDENCY_BOMS = listOf(
 )
 
 val DEPENDENCY_SETS = listOf(
+  DependencySet(
+    "com.google.guava",
+    "29.0-jre",
+    listOf("guava", "guava-testlib")
+  ),
   DependencySet(
     "io.opentelemetry.instrumentation.auto",
     "0.8.0-20200812.182934-26",
@@ -58,6 +63,11 @@ val DEPENDENCY_SETS = listOf(
     "org.assertj",
     "3.17.0",
     listOf("assertj-core")
+  ),
+  DependencySet(
+    "org.curioswitch.curiostack",
+    "1.1.0",
+    listOf("protobuf-jackson")
   ),
   DependencySet(
     "org.slf4j",
