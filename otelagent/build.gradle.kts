@@ -31,7 +31,7 @@ base {
 
 dependencies {
   implementation("io.opentelemetry.javaagent", "opentelemetry-javaagent", classifier = "all")
-  
+
   runtimeOnly("io.opentelemetry:opentelemetry-sdk-extension-aws-v1-support")
 }
 

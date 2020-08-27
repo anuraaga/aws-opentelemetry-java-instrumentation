@@ -26,9 +26,7 @@ public class AwsTracerProviderFactory implements TracerProviderFactory {
 
   static {
     TRACER_PROVIDER =
-        TracerSdkProvider.builder()
-            .setIdsGenerator(new AwsXRayIdsGenerator())
-            .build();
+        TracerSdkProvider.builder().setIdsGenerator(new AwsXRayIdsGenerator()).build();
   }
 
   @Override
