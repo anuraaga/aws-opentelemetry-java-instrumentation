@@ -9,7 +9,7 @@ on:
       - .github/workflows/docker-build-smoke-tests-fake-backend.yml
 
 jobs:
-  build-corretto:
+  build-docker:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
