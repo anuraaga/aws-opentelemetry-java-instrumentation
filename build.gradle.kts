@@ -49,6 +49,8 @@ allprojects {
   spotless {
     kotlinGradle {
       ktlint("0.38.0").userData(mapOf("indent_size" to "2", "continuation_indent_size" to "2"))
+
+      licenseHeaderFile("${rootProject.projectDir}/config/license/header.java", "plugins|include")
     }
   }
 
@@ -73,6 +75,8 @@ allprojects {
     spotless {
       java {
         googleJavaFormat("1.8")
+
+        licenseHeaderFile("${rootProject.projectDir}/config/license/header.java")
       }
     }
 
