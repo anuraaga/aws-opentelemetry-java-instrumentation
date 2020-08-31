@@ -16,7 +16,7 @@ jobs:
       - name: Build snapshot with Gradle
         uses: burrunan/gradle-cache-action@v1
         with:
-          arguments: build snapshot -Pio.awsobservability.enableSmokeTests=true
+          arguments: build snapshot
         env:
           PUBLISH_USERNAME: ${{ github.actor }}
           PUBLISH_PASSWORD: ${{ secrets.GITHUB_TOKEN }}
