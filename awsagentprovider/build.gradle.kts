@@ -31,7 +31,7 @@ dependencies {
   compileOnly("io.opentelemetry:opentelemetry-sdk")
   compileOnly("org.slf4j:slf4j-api")
 
-  compileOnly("io.opentelemetry:opentelemetry-sdk-extension-aws-v1-support")
+  implementation("io.opentelemetry:opentelemetry-sdk-extension-aws-v1-support")
 
   compileOnly("com.google.code.findbugs:jsr305:3.0.2")
 }
@@ -44,15 +44,13 @@ tasks {
 
     exclude("**/module-info.class")
 
-    // Prevents conflict with other SLF4J instances. Important for premain.
-    relocate("org.slf4j", "io.opentelemetry.javaagent.slf4j")
     // rewrite dependencies calling Logger.getLogger
     relocate("java.util.logging.Logger", "io.opentelemetry.javaagent.bootstrap.PatchLogger")
 
     // prevents conflict with library instrumentation
     relocate("io.opentelemetry.instrumentation.api", "io.opentelemetry.javaagent.shaded.instrumentation.api")
 
-    // relocate OpenTelemetry API
+    // relocate OpenTelemetry API usage
     relocate("io.opentelemetry.OpenTelemetry", "io.opentelemetry.javaagent.shaded.io.opentelemetry.OpenTelemetry")
     relocate("io.opentelemetry.common", "io.opentelemetry.javaagent.shaded.io.opentelemetry.common")
     relocate("io.opentelemetry.context", "io.opentelemetry.javaagent.shaded.io.opentelemetry.context")
@@ -61,7 +59,7 @@ tasks {
     relocate("io.opentelemetry.metrics", "io.opentelemetry.javaagent.shaded.io.opentelemetry.metrics")
     relocate("io.opentelemetry.trace", "io.opentelemetry.javaagent.shaded.io.opentelemetry.trace")
 
-    // relocate OpenTelemetry API dependency
+    // relocate OpenTelemetry API dependency usage
     relocate("io.grpc", "io.opentelemetry.javaagent.shaded.io.grpc")
   }
 }

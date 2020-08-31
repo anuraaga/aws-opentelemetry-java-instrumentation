@@ -31,8 +31,6 @@ base {
 
 dependencies {
   implementation("io.opentelemetry.javaagent", "opentelemetry-javaagent", classifier = "all")
-
-  runtimeOnly("io.opentelemetry:opentelemetry-sdk-extension-aws-v1-support")
 }
 
 val agentProviderShadowJarTask = project(":awsagentprovider").tasks.named<Jar>("shadowJar")
@@ -57,6 +55,7 @@ tasks {
       attributes.put("Premain-Class", "com.softwareaws.xray.opentelemetry.agentbootstrap.AwsAgentBootstrap")
       attributes.put("Can-Redefine-Classes", "true")
       attributes.put("Can-Retransform-Classes", "true")
+      attributes.put("Implementation-Version", archiveVersion)
     }
   }
 }

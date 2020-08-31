@@ -24,7 +24,7 @@ val DEPENDENCY_BOMS = listOf(
   "com.fasterxml.jackson:jackson-bom:2.11.0",
   "com.google.protobuf:protobuf-bom:3.13.0",
   "com.linecorp.armeria:armeria-bom:1.0.0",
-  "io.grpc:grpc-bom:1.29.0",
+  "io.grpc:grpc-bom:1.30.2",
   "io.zipkin.brave:brave-bom:5.12.3",
   "io.zipkin.reporter2:zipkin-reporter-bom:2.15.0",
   "org.apache.logging.log4j:log4j-bom:2.13.3",
@@ -41,7 +41,7 @@ val DEPENDENCY_SETS = listOf(
   ),
   DependencySet(
     "io.opentelemetry.javaagent",
-    "0.8.0-20200827.032003-68",
+    "0.8.0-20200830.052917-76",
     listOf(
       "opentelemetry-javaagent"
     )
@@ -51,6 +51,7 @@ val DEPENDENCY_SETS = listOf(
     "0.8.0-20200826.153459-48",
     listOf(
       "opentelemetry-api",
+      "opentelemetry-exporters-logging",
       "opentelemetry-exporters-otlp"
     )
   ),
@@ -58,10 +59,21 @@ val DEPENDENCY_SETS = listOf(
     "io.opentelemetry",
     "0.8.0-20200826.153459-49",
     listOf(
+      "opentelemetry-context-prop",
       "opentelemetry-extension-trace-propagators",
       "opentelemetry-proto",
       "opentelemetry-sdk",
       "opentelemetry-sdk-extension-aws-v1-support"
+    )
+  ),
+  DependencySet(
+    "io.opentelemetry",
+    "0.8.0-20200826.153459-15",
+    listOf(
+      "opentelemetry-sdk-common",
+      "opentelemetry-sdk-correlation-context",
+      "opentelemetry-sdk-metrics",
+      "opentelemetry-sdk-tracing"
     )
   ),
   DependencySet(
