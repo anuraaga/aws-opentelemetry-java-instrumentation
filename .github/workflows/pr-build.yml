@@ -21,4 +21,4 @@ jobs:
       - name: Build with Gradle
         uses: burrunan/gradle-cache-action@v1
         with:
-          arguments: build --info
+          arguments: build

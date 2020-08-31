@@ -39,6 +39,8 @@ tasks {
   named<Test>("test") {
     dependsOn(otelAgentJarTask)
 
+    enabled = project.findProperty("io.awsobservability.enableSmokeTests") == true
+
     jvmArgs(
       "-Dio.awsobservability.instrumentation.smoketests.runner.agentPath=${otelAgentJarTask.get().archiveFile.get()
         .getAsFile().absolutePath}"
