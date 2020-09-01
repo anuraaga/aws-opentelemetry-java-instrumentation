@@ -52,7 +52,7 @@ allprojects {
     kotlinGradle {
       ktlint("0.38.0").userData(mapOf("indent_size" to "2", "continuation_indent_size" to "2"))
 
-      licenseHeaderFile("${rootProject.projectDir}/config/license/header.java", "plugins|include")
+      licenseHeaderFile("${rootProject.projectDir}/config/license/header.java", "plugins|include|import")
     }
   }
 
