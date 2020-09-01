@@ -15,6 +15,9 @@
 
 package io.awsobservability.instrumentation.smoketests.runner;
 
+import static com.google.common.collect.ImmutableList.toImmutableList;
+import static org.assertj.core.api.Assertions.assertThat;
+
 import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
@@ -46,9 +49,6 @@ import org.testcontainers.containers.wait.strategy.Wait;
 import org.testcontainers.junit.jupiter.Container;
 import org.testcontainers.junit.jupiter.Testcontainers;
 import org.testcontainers.utility.MountableFile;
-
-import static com.google.common.collect.ImmutableList.toImmutableList;
-import static org.assertj.core.api.Assertions.assertThat;
 
 @Testcontainers(disabledWithoutDocker = true)
 class SpringBootSmokeTest {
@@ -204,7 +204,7 @@ class SpringBootSmokeTest {
               .content()) {
         List<ExportTraceServiceRequest> currentExported =
             OBJECT_MAPPER.readValue(content.toInputStream(), EXPORT_TRACE_SERVICE_REQUEST_LIST);
-        if (currentExported.size() == exported.size()) {
+        if (!exported.isEmpty() && currentExported.size() == exported.size()) {
           break;
         }
         exported = currentExported;
