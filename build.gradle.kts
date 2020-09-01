@@ -13,6 +13,8 @@
  * permissions and limitations under the License.
  */
 
+import org.gradle.api.tasks.testing.logging.TestExceptionFormat
+
 plugins {
   java
   id("nebula.release") version "15.1.0"
@@ -83,6 +85,11 @@ allprojects {
     tasks {
       withType<Test> {
         useJUnitPlatform()
+
+        testLogging {
+          exceptionFormat = TestExceptionFormat.FULL
+          showStackTraces = true
+        }
       }
 
       named<JavaCompile>("compileTestJava") {
