@@ -26,8 +26,10 @@ public class AwsTracerProviderFactory implements TracerProviderFactory {
 
   static {
     if (System.getProperty("otel.aws.imds.endpointOverride") == null) {
-      System.setProperty(
-          "otel.aws.imds.endpointOverride", System.getenv("OTEL_AWS_IMDS_ENDPOINT_OVERRIDE"));
+      String overrideFromEnv = System.getenv("OTEL_AWS_IMDS_ENDPOINT_OVERRIDE");
+      if (overrideFromEnv != null) {
+        System.setProperty("otel.aws.imds.endpointOverride", overrideFromEnv);
+      }
     }
 
     TRACER_PROVIDER =
