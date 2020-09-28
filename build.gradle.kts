@@ -13,7 +13,6 @@
  * permissions and limitations under the License.
  */
 
-import com.github.jk1.license.LicenseReportExtension
 import com.github.jk1.license.render.InventoryMarkdownReportRenderer
 import org.gradle.api.tasks.testing.logging.TestExceptionFormat
 
